@@ -1,3 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="plugin.program.ftp1" name="FTP &amp; SMB Server" version="2026.06.20" provider-name="mr-evil1">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+    <import addon="repository.kodi.media" optional="true"/>
+  </requires>
+
+  <extension point="xbmc.python.script" library="script.py">
+    <provides>executable</provides>
+  </extension>
+
+  <extension point="xbmc.service" library="service.py" start="startup"/>
+
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="de">FTP- &amp; SMB-Server für Kodi 22 (Android 14 Schreibzugriff)</summary>
+    <summary lang="en">FTP &amp; SMB Server for Kodi 22 with Android 14 write access</summary>
+    <description lang="de">
+      Startet automatisch einen FTP- und/oder SMB-Server beim Kodi-Start.
+      FTP: Voller Schreibzugriff auf Android 14, konfigurierbare Ports, Anonym- und User-Modus.
+      SMB (Samba): Mobiler Samba-Server powered by impacket (in lib/impacket/ gebündelt).
+      SMB-Share ist aus Windows/macOS/Linux direkt als Netzlaufwerk erreichbar.
+      Benötigt für SMB-Auth: pycryptodomex (siehe DEPS_INFO.txt).
+      Kompatibel mit Kodi 21 (Omega).
+    </description>
+    <description lang="en">
+      Automatically starts an FTP and/or SMB server when Kodi starts.
+      FTP: Full write access on Android 14, configurable ports, anonymous and user mode.
+      SMB (Samba): Mobile Samba server powered by impacket (bundled in lib/impacket/).
+      SMB share is directly accessible as a network drive from Windows/macOS/Linux.
+      Requires for SMB auth: pycryptodomex (see DEPS_INFO.txt).
+      Compatible with Kodi 21 (Omega).
+    </description>
+    <news>
+      v4.0.1 - Kodi 22 (Piers) Kompatibilität.
+               Hardcodierten org.xbmc.kodi Pfad entfernt; Android-Datenpfad wird jetzt
+               dynamisch aus special://home abgeleitet (Fork-kompatibel).
+               repository.kodi.media Abhängigkeit als optional markiert.
+      v4.0.0 - Neuaufbau für Kodi 21 (Omega).
+               Nicht benötigter Code entfernt (__pycache__, Duplikate, asynchat-Shims, requests, icon.jpg).
+               pyasn1/pyasn1_modules/impacket/six bleiben gebündelt (SMB-Abhängigkeiten).
+               Code modernisiert und Bugs behoben.
+    </news>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon>
 </addons>
